@@ -1,15 +1,30 @@
 package com.example.demo.estudiante.repository.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Table(name = "estudiante", schema = "public")
+@Entity
 public class Estudiante {
 	
 	
+	@Column(name = "estu_nombre")
 	private String nombre;
+	
+	@Column(name = "estu_apellido")
 	private String apellido;
+	
+	@Column(name = "estu_edad")
 	private String edad;
+	
+	@Id
+	@Column(name = "estu_cedula")
 	private String cedula;
 	
 	
-	
+	//get y set
 	public String getCedula() {
 		return cedula;
 	}

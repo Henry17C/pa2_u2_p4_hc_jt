@@ -22,12 +22,30 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		
+		//Creacion de estudiante
 		Estudiante estudiante= new Estudiante();
+		estudiante.setCedula("1234");
 		estudiante.setApellido("Coyago");
 		estudiante.setEdad("2");
-		estudiante.setNombre("Henry");
+		estudiante.setNombre("Ismael");
 		
-		estudianteService.registrar(estudiante);
+		
+		//Insertar estudiante
+		estudianteService.insertar(estudiante);
+		
+		
+		//Actualizar estudiante
+		estudiante.setNombre("Israel");
+		estudianteService.actualizar(estudiante);
+		
+		
+		//Borrar estudiante
+		estudianteService.eliminar("123");
+	
+		
+		System.out.println(estudianteService.buscar("1234"));
 		System.out.println(":)");
 	}
 

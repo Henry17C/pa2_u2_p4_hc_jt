@@ -11,11 +11,30 @@ public class EstudianteServiceImpl implements EstudianteService {
 
 	@Autowired
 	private EstudianteRepo estudianteRepo;
-	
+
+
 	@Override
-	public void registrar(Estudiante estu) {
+	public void insertar(Estudiante estu) {
 		// TODO Auto-generated method stub
-		estudianteRepo.insertar(estu);
+		this.estudianteRepo.insertar(estu);
+	}
+
+	@Override
+	public void actualizar(Estudiante estudiante) {
+		// TODO Auto-generated method stub
+		this.estudianteRepo.actualizar(estudiante);
+	}
+
+	@Override
+	public Estudiante buscar(String cedula) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscar(cedula);
+	}
+
+	@Override
+	public void eliminar(String cedula) {
+		// TODO Auto-generated method stub
+		this.estudianteRepo.eliminar(cedula);
 	}
 
 }
