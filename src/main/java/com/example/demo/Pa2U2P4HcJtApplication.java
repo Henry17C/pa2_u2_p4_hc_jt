@@ -23,7 +23,6 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	@Autowired
 	private CuentaBancariaService cuentaBancariaService;
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4HcJtApplication.class, args);
 	}
@@ -60,16 +59,25 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	*/
 		
 		CuentaBancaria cuentaBancaria = new CuentaBancaria();
-		
-		cuentaBancaria.setCedulaPropietario("1234567890");
-		cuentaBancaria.setNumero("12345");
+		/*
+		cuentaBancaria.setCedulaPropietario("1234567850");
+		cuentaBancaria.setNumero("12346");
 		cuentaBancaria.setFechaApertura(LocalDateTime.now());
 		cuentaBancaria.setSaldo(new BigDecimal(100));
 		cuentaBancaria.setTipo("A");
 		
-		this.cuentaBancariaService.aperturar(cuentaBancaria);
+	
 		
-		this.cuentaBancariaService.depositar(1, new BigDecimal(100));
+		this.cuentaBancariaService.aperturar(cuentaBancaria);
+		*/
+	
+		
+	
+		System.out.println("cuenta antes del deposito: "+this.cuentaBancariaService.consultar(9));
+		this.cuentaBancariaService.depositar(9, new BigDecimal(100));
+		System.out.println("cuenta despues del deposito: "+ this.cuentaBancariaService.consultar(9));
+		
+		//this.cuentaBancariaService.actualizar(cuentaBancaria);
 		
 	}
 
