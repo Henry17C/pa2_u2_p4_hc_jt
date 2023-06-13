@@ -2,12 +2,26 @@ package com.example.demo.estudiante.repository.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Table(name = "estudiante", schema = "public")
 @Entity
 public class Estudiante {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_estudiante")
+	@SequenceGenerator(name = "seq_estudiante", sequenceName = "seq_estudiante", allocationSize = 1)
+	@Column(name = "estu_id")
+	private Integer id;
+	
+	
+	@Column(name = "estu_cedula")
+	private String cedula;
 	
 	
 	@Column(name = "estu_nombre")
@@ -19,9 +33,6 @@ public class Estudiante {
 	@Column(name = "estu_edad")
 	private String edad;
 	
-	@Id
-	@Column(name = "estu_cedula")
-	private String cedula;
 	
 	
 	//get y set
