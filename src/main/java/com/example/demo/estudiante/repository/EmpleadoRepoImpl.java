@@ -2,33 +2,36 @@ package com.example.demo.estudiante.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.estudiante.repository.modelo.CuentaBancaria;
+import com.example.demo.estudiante.repository.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-@Transactional
+
 @Repository
-public class CuentaBancariaRepositoryImpl implements CuentaBancariaRepsository{
-
-	@PersistenceContext
+@Transactional
+public class EmpleadoRepoImpl  implements IEmpleadoRepo {
+	
+	
+	@PersistenceContext 
 	private EntityManager entityManager;
+
 	@Override
-	public void insertar(CuentaBancaria cuentaBancaria) {
+	public void insertar(Empleado empleado) {
 		// TODO Auto-generated method stub
-		this.entityManager.persist(cuentaBancaria);
+		entityManager.persist(empleado);
 	}
 
 	@Override
-	public void actualizar(CuentaBancaria cuentaBancaria) {
+	public void actualizar(Empleado empleado) {
 		// TODO Auto-generated method stub
-		this.entityManager.merge(cuentaBancaria);
+		entityManager.merge(empleado);
 	}
 
 	@Override
-	public CuentaBancaria buscar(Integer id) {
+	public Empleado buscar(Integer id) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(CuentaBancaria.class, id);
+		return this.entityManager.find(Empleado.class, id);
 	}
 
 	@Override
@@ -36,5 +39,13 @@ public class CuentaBancariaRepositoryImpl implements CuentaBancariaRepsository{
 		// TODO Auto-generated method stub
 		this.entityManager.remove(this.buscar(id));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
