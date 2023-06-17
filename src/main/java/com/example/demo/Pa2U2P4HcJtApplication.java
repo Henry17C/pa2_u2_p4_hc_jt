@@ -37,36 +37,40 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 	
 		
+		Ciudadano ciudadano2= new Ciudadano();
 		
 		
 		System.out.println( "CIUDADANO");
 		Ciudadano ciudadano= new Ciudadano();
 		ciudadano.setApellido("Rodriguez");
-		ciudadano.setCedula("123");
+		ciudadano.setCedula("1234");
 		//ciudadano.setEmpleado(null);
-		ciudadano.setNombre("Axel");
-		
-		ciudadanoService.insertar(ciudadano);
-		ciudadano.setApellido("Hernandez");
-		ciudadanoService.actualizar(ciudadano);
-		ciudadanoService.eliminar(1);
-		System.out.println(ciudadanoService.buscar(2));
+		ciudadano.setNombre("Melanie");
 		
 		
+		//ciudadanoService.insertar(ciudadano);
+		//ciudadano.setApellido("Hernandez");
+		//ciudadanoService.actualizar(ciudadano);
+		//ciudadanoService.eliminar(1);
+		//System.out.println(ciudadanoService.buscar(2));
 		
+		
+	
 		System.out.println( "EMPLEADO");
 		Empleado empleado= new Empleado();
-		empleado.setCargo("Obrero");
-		empleado.setCiudadano(ciudadanoService.buscar(5));
+		empleado.setCargo("Gerente");
+	
+		empleado.setCiudadano(ciudadano2);
 		empleado.setSueldo(new BigDecimal(540));
 		
 		
 		empleadoService.insertar(empleado);
-		empleado.setSueldo(new BigDecimal(430));
+		
+		/*empleado.setSueldo(new BigDecimal(430));
 		empleadoService.actualizar(empleado);
 		System.out.println(empleadoService.buscar(1));
 		empleadoService.eliminar(2);
-	
+	*/
 		
 		
 	}
