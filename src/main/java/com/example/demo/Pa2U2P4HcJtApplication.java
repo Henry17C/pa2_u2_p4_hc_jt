@@ -1,17 +1,22 @@
 package com.example.demo;
 
+
+
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.estudiante.repository.IHotelRepo;
 import com.example.demo.estudiante.repository.modelo.Ciudadano;
-import com.example.demo.estudiante.repository.modelo.Empleado;
-import com.example.demo.estudiante.service.ICiudadanoService;
-import com.example.demo.estudiante.service.IEmpleadoService;
+import com.example.demo.estudiante.repository.modelo.Habitacion;
+import com.example.demo.estudiante.repository.modelo.Hotel;
+import com.example.demo.estudiante.service.IHabitacionService;
+import com.example.demo.estudiante.service.IHotelService;
 
 
 
@@ -19,13 +24,12 @@ import com.example.demo.estudiante.service.IEmpleadoService;
 public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 
 	
+	@Autowired
+	private IHotelService hotelService;
 	
 	@Autowired
-	private ICiudadanoService ciudadanoService;
-	
-	
-	@Autowired 
-	private IEmpleadoService empleadoService;
+	private IHabitacionService habitacionService;
+
 	
 
 	
@@ -37,40 +41,81 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 	
 		
-		Ciudadano ciudadano2= new Ciudadano();
 		
-		
-		System.out.println( "CIUDADANO");
-		Ciudadano ciudadano= new Ciudadano();
-		ciudadano.setApellido("Rodriguez");
-		ciudadano.setCedula("1234");
-		//ciudadano.setEmpleado(null);
-		ciudadano.setNombre("Melanie");
-		
-		
-		//ciudadanoService.insertar(ciudadano);
-		//ciudadano.setApellido("Hernandez");
-		//ciudadanoService.actualizar(ciudadano);
-		//ciudadanoService.eliminar(1);
-		//System.out.println(ciudadanoService.buscar(2));
-		
-		
+		Hotel hotel= new Hotel();
+		hotel.setDireccion("Av E35");
+		hotel.setNombre("Hotel Europa");
 	
-		System.out.println( "EMPLEADO");
-		Empleado empleado= new Empleado();
-		empleado.setCargo("Gerente");
-	
-		empleado.setCiudadano(ciudadano2);
-		empleado.setSueldo(new BigDecimal(540));
+
+		List <Habitacion> habitaciones= new ArrayList<>();
 		
 		
-		empleadoService.insertar(empleado);
+		/*
+		Habitacion habitacion= new Habitacion();
+		habitacion.setHotel(this.hotelService.buscar(2));
+		habitacion.setNumero("1");
+		habitacion.setValor(new BigDecimal(50));
+		habitacionService.insertar(habitacion);
+		*/
 		
-		/*empleado.setSueldo(new BigDecimal(430));
-		empleadoService.actualizar(empleado);
-		System.out.println(empleadoService.buscar(1));
-		empleadoService.eliminar(2);
-	*/
+
+		Habitacion habitacion1= new Habitacion();
+		habitacion1.setHotel(hotel);
+		habitacion1.setNumero("1");
+		habitacion1.setValor(new BigDecimal(100));
+		
+		Habitacion habitacion2= new Habitacion();
+		habitacion2.setHotel(hotel);
+		habitacion2.setNumero("2");
+		habitacion2.setValor(new BigDecimal(200));
+		
+		Habitacion habitacion3= new Habitacion();
+		habitacion3.setHotel(hotel);
+		habitacion3.setNumero("3");
+		habitacion3.setValor(new BigDecimal(300));
+		
+		Habitacion habitacion4= new Habitacion();
+		habitacion4.setHotel(hotel);
+		habitacion4.setNumero("4");
+		habitacion4.setValor(new BigDecimal(400));
+		
+		Habitacion habitacion5= new Habitacion();
+		habitacion5.setHotel(hotel);
+		habitacion5.setNumero("5");
+		habitacion5.setValor(new BigDecimal(500));
+		
+		
+		habitaciones.add(habitacion5);
+		habitaciones.add(habitacion4);
+		habitaciones.add(habitacion3);
+		habitaciones.add(habitacion2);
+		habitaciones.add(habitacion1);
+		hotel.setHabitaciones(habitaciones);
+		hotelService.insertar(hotel);
+		hotelService.actualizar(hotel);
+		habitacion1.setNumero("2");
+		hotelService.buscar(14);
+		hotelService.eliminar(14);
+		
+		
+		habitacionService.actualizar(habitacionService.buscar(73));
+		habitacionService.buscar(73);
+		habitacionService.eliminar(73);
+		
+		
+		
+//		habitacionService.insertar(habitacion5);
+//		habitacionService.insertar(habitacion4);
+//		habitacionService.insertar(habitacion3);
+//		habitacionService.insertar(habitacion2);
+//		habitacionService.insertar(habitacion1);
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}
