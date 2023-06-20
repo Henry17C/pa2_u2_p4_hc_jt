@@ -15,8 +15,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.estudiante.repository.IAutorRepo;
 import com.example.demo.estudiante.repository.modelo.Autor;
 import com.example.demo.estudiante.repository.modelo.Libro;
+import com.example.demo.estudiante.service.IAutorService;
 import com.example.demo.estudiante.service.IHabitacionService;
 import com.example.demo.estudiante.service.IHotelService;
 import com.example.demo.estudiante.service.ILibroService;
@@ -28,7 +30,7 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 
 	
 	@Autowired
- private ILibroService iLibroService;
+ private IAutorService autorService;
 
 	
 	public static void main(String[] args) {
@@ -41,40 +43,49 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 		
 		
 		Autor autor= new Autor();
-		autor.setApellido("Aliheri");
-		autor.setNombre("Homero");
-		
-		Autor autor2= new Autor();
-		autor2.setApellido("Aliheri");
-		autor2.setNombre("Dante");
-		
+		autor.setApellido("Coello");
+		autor.setNombre("Paullo");
 		
 		
 		Libro libro= new Libro();
-		libro.setEditorial("FantaSY");
-		libro.setTitulo("La Iliada");
+		libro.setEditorial("Planeta");
+		libro.setTitulo("El alquimista");
+			
 		
-		
-		
-		
+		Libro libro1= new Libro();
+		libro1.setEditorial("Planeta");
+		libro1.setTitulo("La vida");
 		
 
 
+         Set<Libro> libros= new HashSet<>();
          Set<Autor> autores= new HashSet<>();
-         autores.add(autor2);
-         autores.add(autor);
-         
- 		libro.setAutores(autores);
- 		iLibroService.insertar(libro);
- 		iLibroService.actualizar(libro);
- 		iLibroService.buscar(2);
- 	
- 		
- 		//iLibroService.elimnar(1);
- 		
 
-	
-		//iLibroService.insertar(libro);
+         
+         libros.add(libro);
+         libros.add(libro1);
+         autores.add(autor);
+
+         autor.setLibros(libros);
+        libro.setAutores(autores);
+ 		 libro1.setAutores(autores);
+
+         autorService.insertar(autor);
+ 		 autor.setNombre("Paulo");
+         autorService.actualizar(autor);
+         autorService.buscar(4);
+         autorService.eliminar(4);
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
 		
 		
 	}
