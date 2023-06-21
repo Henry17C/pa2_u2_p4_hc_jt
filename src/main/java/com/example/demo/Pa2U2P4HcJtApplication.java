@@ -4,6 +4,7 @@ package com.example.demo;
 
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,12 +17,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.estudiante.repository.IAutorRepo;
+import com.example.demo.estudiante.repository.modelo.Alumno;
 import com.example.demo.estudiante.repository.modelo.Autor;
 import com.example.demo.estudiante.repository.modelo.Libro;
+import com.example.demo.estudiante.repository.modelo.Materia;
+import com.example.demo.estudiante.repository.modelo.Matricula;
 import com.example.demo.estudiante.service.IAutorService;
 import com.example.demo.estudiante.service.IHabitacionService;
 import com.example.demo.estudiante.service.IHotelService;
 import com.example.demo.estudiante.service.ILibroService;
+import com.example.demo.estudiante.service.IMatriculaReviceI;
 
 
 
@@ -30,7 +35,7 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 
 	
 	@Autowired
- private IAutorService autorService;
+ private IMatriculaReviceI iMatriculaReviceI;
 
 	
 	public static void main(String[] args) {
@@ -41,44 +46,29 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 	
 		
-		
-		Autor autor= new Autor();
-		autor.setApellido("Coello");
-		autor.setNombre("Paullo");
+	
+		List<Matricula> matriculas =new ArrayList<>();
 		
 		
-		Libro libro= new Libro();
-		libro.setEditorial("Planeta");
-		libro.setTitulo("El alquimista");
-			
+		Materia materia = new Materia();
+		materia.setNombre("Programacion");
+		materia.setMatriculas(matriculas);
+	
 		
-		Libro libro1= new Libro();
-		libro1.setEditorial("Planeta");
-		libro1.setTitulo("La vida");
+		Alumno alumno= new Alumno();
+		alumno.setNombre("Calculo");
+		alumno.setMatriculas(matriculas);
+         
+         
+	Matricula matricula= new Matricula();
 		
-
-
-         Set<Libro> libros= new HashSet<>();
-         Set<Autor> autores= new HashSet<>();
-
-         
-         libros.add(libro);
-         libros.add(libro1);
-         autores.add(autor);
-
-         autor.setLibros(libros);
-        libro.setAutores(autores);
- 		 libro1.setAutores(autores);
-
-         autorService.insertar(autor);
- 		 autor.setNombre("Paulo");
-         autorService.actualizar(autor);
-         autorService.buscar(4);
-         autorService.eliminar(4);
-         
-         
-         
-         
+		matricula.setFecha(LocalDateTime.now());
+		matriculas.add(matricula);
+		matricula.setNumero("1");
+		matricula.setAlumno(alumno);
+		matricula.setMateria(materia);
+		
+		iMatriculaReviceI.insertar(matricula);
          
          
          
