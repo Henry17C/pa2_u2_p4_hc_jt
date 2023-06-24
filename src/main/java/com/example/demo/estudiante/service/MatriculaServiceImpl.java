@@ -7,7 +7,7 @@ import com.example.demo.estudiante.repository.IMatriculaRepo;
 import com.example.demo.estudiante.repository.modelo.Matricula;
 
 @Service
-public class MatriculaServiceImpl implements IMatriculaReviceI {
+public class MatriculaServiceImpl implements IMatriculaSevice {
 
 	
 	@Autowired

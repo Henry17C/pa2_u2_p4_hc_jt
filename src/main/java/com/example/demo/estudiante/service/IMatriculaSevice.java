@@ -2,7 +2,7 @@ package com.example.demo.estudiante.service;
 
 import com.example.demo.estudiante.repository.modelo.Matricula;
 
-public interface IMatriculaReviceI {
+public interface IMatriculaSevice {
 
 	
 	public void insertar(Matricula matricula);
