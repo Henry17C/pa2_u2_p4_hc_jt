@@ -4,6 +4,7 @@ package com.example.demo;
 
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -16,8 +17,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.estudiante.repository.IAutorRepo;
+import com.example.demo.estudiante.repository.modelo.Auto;
 import com.example.demo.estudiante.repository.modelo.Autor;
 import com.example.demo.estudiante.repository.modelo.Libro;
+import com.example.demo.estudiante.service.IAutoService;
 import com.example.demo.estudiante.service.IAutorService;
 import com.example.demo.estudiante.service.IHabitacionService;
 import com.example.demo.estudiante.service.IHotelService;
@@ -30,7 +33,7 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 
 	
 	@Autowired
- private IAutorService autorService;
+ private IAutoService autoService;
 
 	
 	public static void main(String[] args) {
@@ -39,46 +42,23 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Auto auto= new Auto();
+		auto.setColor("azul");
+		auto.setMarca("Mazda");
+		auto.setPlaca("RAC123");
+		auto.setPrecio(new BigDecimal(6000));
 	
+		//autoService.insertar(auto);
 		
-		
-		Autor autor= new Autor();
-		autor.setApellido("Coello");
-		autor.setNombre("Paullo");
-		
-		
-		Libro libro= new Libro();
-		libro.setEditorial("Planeta");
-		libro.setTitulo("El alquimista");
-			
-		
-		Libro libro1= new Libro();
-		libro1.setEditorial("Planeta");
-		libro1.setTitulo("La vida");
-		
-
-
-         Set<Libro> libros= new HashSet<>();
-         Set<Autor> autores= new HashSet<>();
-
+		System.out.println(autoService.buscarAuto("HC123"));
+		System.out.println(autoService.buscarAutoTyped("RAC123", new BigDecimal(6000)));
+		System.out.println(autoService.buscarAutoLista("rojo").get(0));
+		System.out.println(autoService.buscarAutoListaTyped("ABC123", "rojo", new BigDecimal(3000)).get(0));
          
-         libros.add(libro);
-         libros.add(libro1);
-         autores.add(autor);
-
-         autor.setLibros(libros);
-        libro.setAutores(autores);
- 		 libro1.setAutores(autores);
-
-         autorService.insertar(autor);
- 		 autor.setNombre("Paulo");
-         autorService.actualizar(autor);
-         autorService.buscar(4);
-         autorService.eliminar(4);
-         
-         
-         
-         
+		
+		
+		;
          
          
          
