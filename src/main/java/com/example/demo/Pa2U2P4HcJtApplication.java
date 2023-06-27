@@ -48,7 +48,7 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 	
 		
-	
+	/*
          Estudiante estudiante= new Estudiante();
          estudiante.setApellido("Gomez");
          estudiante.setCedula("54321");
@@ -70,6 +70,19 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 		
 		System.out.println("Typed");
 		System.out.println(estudianteService.seleccionarPorApellidoTyped("Coyago"));
+		*/
+		
+		
+		
+		LocalDateTime fecha= LocalDateTime.now();
+		LocalDateTime fechaAyer= LocalDateTime.of(2022, 5, 12, 0, 0);
+		
+		
+		
+		
+		System.out.println("resultado: "+fechaAyer.compareTo(fecha));
+		
+		
 		
 		
 	}
