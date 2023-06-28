@@ -47,43 +47,13 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 	
-		
-	/*
-         Estudiante estudiante= new Estudiante();
-         estudiante.setApellido("Gomez");
-         estudiante.setCedula("54321");
-         estudiante.setEdad("25");
-         estudiante.setNombre("Mark");
-        // estudianteService.insertar(estudiante);
-         
-        System.out.println(  estudianteService.buscarPorApellido("Coyago"));
-         
-         
-        List<Estudiante> estudiantes= this.estudianteService.reporteEstudiantes("Gomez");
-		for (Estudiante e: estudiantes) {
-			System.out.println(e);
-		}
-		
-		
-		
-		System.out.println(this.estudianteService.seleccionarPorApellidoyNombre("Toscano","Juan"));
-		
-		System.out.println("Typed");
-		System.out.println(estudianteService.seleccionarPorApellidoTyped("Coyago"));
-		*/
-		
-		
-		
-		LocalDateTime fecha= LocalDateTime.now();
-		LocalDateTime fechaAyer= LocalDateTime.of(2022, 5, 12, 0, 0);
-		
-		
-		
-		
-		System.out.println("resultado: "+fechaAyer.compareTo(fecha));
-		
-		
-		
+		System.out.println(estudianteService.seleccionarPorApellidoNamed("Coyago"));
+		System.out.println(estudianteService.seleccionarPorApellidoNamedQuery("Coyago"));
+		System.out.println(estudianteService.seleccionarPorApellidoNativeQuery("Coyago"));
+
+		System.out.println(estudianteService.seleccionarPorApellidoNativeQueryNamed("Coyago"));
+		System.out.println(estudianteService.seleccionarPorNombreNamed("Mark"));
+		System.out.println(estudianteService.seleccionarPorNombreNativeQueryNamed("Mark"));
 		
 	}
 
