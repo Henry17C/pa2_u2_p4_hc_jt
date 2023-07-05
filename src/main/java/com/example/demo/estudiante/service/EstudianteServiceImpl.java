@@ -82,4 +82,22 @@ public class EstudianteServiceImpl  implements IEstudianteService{
 		return estudianteRepo.seleccionarPorNombreNamed(nombre);
 	}
 
+	@Override
+	public Estudiante seleccionarEstudianteDinamico(String nombre, String apellido, Double peso) {
+		// TODO Auto-generated method stub
+		return estudianteRepo.seleccionarEstudianteDinamico(nombre, apellido, peso);
+	}
+
+	@Override
+	public int eliminarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return estudianteRepo.borrarPorNombre(nombre);
+	}
+
+	@Override
+	public int actualizar(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		return estudianteRepo.actualizar(nombre, apellido);
+	}
+
 }

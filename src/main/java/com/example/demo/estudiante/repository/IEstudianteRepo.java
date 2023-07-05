@@ -31,7 +31,11 @@ public interface IEstudianteRepo {
 	
 	public Estudiante seleccionarPorApellidoCriteriaAPIQuery(String apellido);
 
+	public Estudiante seleccionarEstudianteDinamico(String nombre,String apellido, Double peso);
+
 	
+	public int borrarPorNombre(String nombre);
+	public int actualizar(String nombre,String apellido);
 	
 	
 }

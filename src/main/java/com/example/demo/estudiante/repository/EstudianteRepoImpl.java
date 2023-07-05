@@ -143,6 +143,77 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 		
 		return queryFinal.getSingleResult();
 	}
+
+	@Override
+	public Estudiante seleccionarEstudianteDinamico(String nombre, String apellido, Double peso) {
+		// TODO Auto-generated method stub
+		
+		//0. declara un constructor
+		CriteriaBuilder mybuilder= this.entityManager.getCriteriaBuilder();
+		//1
+		CriteriaQuery< Estudiante> myCriteriaQuery= mybuilder.createQuery(Estudiante.class);
+		//2
+		Root<Estudiante> mitablaFrom= myCriteriaQuery.from(Estudiante.class);//FROM estudiante
+		//3 costruccion de condiciones
+		// >100 e.nombre=? and  e.apellido=?
+		// <=100 e.nombre=?  or e.apellido=?
+		//100 e.nombre=?
+		Predicate pNombre = mybuilder.equal(mitablaFrom.get("nombre"), nombre);
+		// e.apellido=?
+		Predicate pApellido = mybuilder.equal(mitablaFrom.get("apellido"), apellido);
+		
+		Predicate predicadoFinal=null;
+		if(peso.compareTo(Double.valueOf(100))<=0) {
+			predicadoFinal= mybuilder.or(pNombre, pApellido);
+		
+		}else {
+			predicadoFinal= mybuilder.and(pNombre, pApellido);
+			
+			
+		}
+			
+		
+		//4. vamos a armar el sql final 
+				myCriteriaQuery.select(mitablaFrom).where(predicadoFinal);
+				//puedo pasarle u obj criteria query
+				
+				//5. la ejecucion de query la realizamos con typedQuery
+				TypedQuery<Estudiante> queryFinal= this.entityManager.createQuery(myCriteriaQuery);
+				
+				
+				
+				return queryFinal.getSingleResult();
+		
+		
+	}
+
+	@Override
+	public int borrarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		//delete from estudiante where nombre= nombre
+		// delete from Estudinate e where e.nombre = :nombre
+		
+		Query query= this .entityManager.createQuery("delete from Estudiante e where e.nombre = :nombre");
+		query.setParameter("nombre", nombre);
+		return query.executeUpdate();
+	
+	}
+
+	@Override
+	public int actualizar(String nombre,String apellido) {
+		// TODO Auto-generated method stub
+		
+		Query query= this .entityManager.createQuery("Update Estudiante e set e.nombre = :nombre where e.apellido= :apellido");
+		query.setParameter("apellido", apellido);
+		query.setParameter("nombre", nombre);
+		return query.executeUpdate();
+	
+		
+	}
+	
+	
+	
+	
 	
 	
 	
