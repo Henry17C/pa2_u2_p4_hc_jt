@@ -1,6 +1,10 @@
 package com.example.demo.estudiante.repository;
 
+import java.util.List;
+
 import com.example.demo.estudiante.repository.modelo.Matricula;
+import com.example.demo.estudiante.repository.modelo.dto.EstudianteDTO;
+import com.example.demo.estudiante.repository.modelo.dto.MatriculaDTO;
 
 public interface IMatriculaRepo {
 	
@@ -10,5 +14,9 @@ public interface IMatriculaRepo {
 	public Matricula buscar(Integer  id);
 	public void eliminar(Integer id);
 	
+	//public buscarTodosDTO(String nombre, String );
+	
+	
+	public List<MatriculaDTO> seleccionarTodosDTO();
 	
 }

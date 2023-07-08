@@ -20,6 +20,7 @@ import com.example.demo.estudiante.repository.IAutorRepo;
 import com.example.demo.estudiante.repository.modelo.Alumno;
 import com.example.demo.estudiante.repository.modelo.Autor;
 import com.example.demo.estudiante.repository.modelo.Estudiante;
+import com.example.demo.estudiante.repository.modelo.Habitacion;
 import com.example.demo.estudiante.repository.modelo.Libro;
 import com.example.demo.estudiante.repository.modelo.Materia;
 import com.example.demo.estudiante.repository.modelo.Matricula;
@@ -38,6 +39,13 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 	
 	@Autowired
  private IEstudianteService estudianteService;
+	
+	@Autowired
+	private IMatriculaSevice iMatriculaSevice;
+	
+	@Autowired
+	private IHotelService hotelService;
+	
 
 	
 	public static void main(String[] args) {
@@ -79,12 +87,35 @@ public class Pa2U2P4HcJtApplication implements CommandLineRunner{
 		//System.out.println(estudianteService.seleccionarEstudianteDinamico("Pabl", "Fred", 103.0));
 		//System.out.println(estudianteService.seleccionarEstudianteDinamico("Pablo", "Freire", 20.0));
 	
-		System.out.println(estudianteService.actualizar("Mario", "Fred"));
-		System.out.println(estudianteService.eliminarPorNombre("Mario"));
+//		System.out.println(estudianteService.actualizar("Mario", "Fred"));
+//		System.out.println(estudianteService.eliminarPorNombre("Mario"));
+//		
+		
+
+	//System.out.println(estudianteService.buscarTodosDTO());
 		
 		
 		
+		//iMatriculaSevice.seleccionarTodosDTO();
 		
+		System.out.println(iMatriculaSevice.seleccionarTodosDTO());
+		
+		//hotelService.buscar(1);
+		
+		System.out.println(hotelService.buscar(1).getNombre());
+		
+		System.out.println();
+		
+		
+		List<Habitacion> habitaciones= hotelService.buscar(1).getHabitaciones();
+		
+		
+		System.out.println( "Habitaciones ");
+		for (Habitacion habitacion : habitaciones) {
+			
+			
+			System.out.println(habitacion.getNumero());
+		}
 	}
 
 }

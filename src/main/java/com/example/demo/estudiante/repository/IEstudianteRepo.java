@@ -3,6 +3,7 @@ package com.example.demo.estudiante.repository;
 import java.util.List;
 
 import com.example.demo.estudiante.repository.modelo.Estudiante;
+import com.example.demo.estudiante.repository.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteRepo {
 	
@@ -33,9 +34,18 @@ public interface IEstudianteRepo {
 
 	public Estudiante seleccionarEstudianteDinamico(String nombre,String apellido, Double peso);
 
-	
 	public int borrarPorNombre(String nombre);
+	
 	public int actualizar(String nombre,String apellido);
+	
+	public List<EstudianteDTO> seleccionarTodosDTO();
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -5,6 +5,7 @@ package com.example.demo.estudiante.service;
 import java.util.List;
 
 import com.example.demo.estudiante.repository.modelo.Estudiante;
+import com.example.demo.estudiante.repository.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteService {
 	public Estudiante buscarPorApellido(String apellido);
@@ -27,5 +28,7 @@ public interface IEstudianteService {
 	
 	public int eliminarPorNombre(String nombre);
 	public int actualizar(String nombre,String apellido);
+	
+	public List<EstudianteDTO> buscarTodosDTO();
 
 }
